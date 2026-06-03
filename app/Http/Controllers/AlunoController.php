@@ -24,4 +24,9 @@ class AlunoController extends Controller
 
         return redirect('/cadastrarAluno');
     }
+
+      public function create()
+    {
+        return view('cadastro');
+    }
 }
