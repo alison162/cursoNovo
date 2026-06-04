@@ -6,6 +6,7 @@ use App\Models\Curso;
 use App\Models\Matricula;
 use App\Models\Aluno;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class MatriculaController extends Controller
 {
@@ -24,8 +25,9 @@ class MatriculaController extends Controller
 
     public function create()
     {
+$dataDaMatricula = Carbon::now()->format('Y-m-d');
         $alunos = Aluno::orderBy('nome')->get();
         $cursos = Curso::orderBy('nome')->get();
-        return view('cadastrarMatricula', compact('alunos', 'cursos'));
+        return view('cadastrarMatricula', compact('alunos', 'cursos', 'dataDaMatricula'));
     }
 }

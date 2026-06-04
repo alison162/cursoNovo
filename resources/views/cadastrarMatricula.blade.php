@@ -62,7 +62,7 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="nome" class="form-label">Nome</label>
-                                    <select name="aluno_id" id="aluno_id" class="form-control">
+                                    <select name="aluno_id" id="aluno_id" class="form-control" required>
 
                                         <option value="">Selecione um aluno</option>
 
@@ -76,7 +76,7 @@
 
                                 <div class="mb-3">
                                     <label for="curso" class="form-label">Curso</label>
-                                    <select name="curso_id" id="curso_id" class="form-control">
+                                    <select name="curso_id" id="curso_id" class="form-control" required>
                                         <option value="">Selecione um curso</option>
                                         @foreach($cursos as $curso)
                                             <option value="{{ $curso->id }}">
@@ -88,7 +88,7 @@
 
                                 <div class="mb-3">
                                     <label for="dataDaMatricula" class="form-label">Data da Matrícula</label>
-                                    <input type="date" name="dataDaMatricula" class="form-control" id="dataDaMatricula">
+                                    <input type="date" name="dataDaMatricula" class="form-control" value="{{ $dataDaMatricula }}" id="dataDaMatricula" readonly>
                                 </div>
 
                                 <button type="submit" class="btn btn-success">Salvar</button>
