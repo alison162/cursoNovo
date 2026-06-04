@@ -8,12 +8,8 @@ use App\Models\Curso;
 
 class AlunoController extends Controller
 {
-    public function cadastrarAluno()
-    {
-        return view('cadastrarAluno');
-    }
 
-    public function salvarAluno(Request $request)
+    public function store(Request $request)
     {
         $aluno = new Aluno();
 
@@ -27,6 +23,6 @@ class AlunoController extends Controller
 
       public function create()
     {
-        return view('cadastro');
+        return view('cadastrarAluno');
     }
 }

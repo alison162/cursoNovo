@@ -8,12 +8,7 @@ use App\Models\Curso;
 
 class CursoController extends Controller
 {
-    public function cadastrarCurso()
-    {
-        return view('cadastrarCurso');
-    }
-
-    public function salvarCurso(Request $request)
+    public function store(Request $request)
     {
         $curso = new Curso();
         $curso->nome = $request->nome;
@@ -22,5 +17,9 @@ class CursoController extends Controller
         $curso->save();
 
         return redirect('/cadastrarCurso');
+    }
+    public function create()
+    {
+        return view('cadastrarCurso');
     }
 }

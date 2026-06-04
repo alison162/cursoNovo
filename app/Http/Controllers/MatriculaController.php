@@ -9,15 +9,8 @@ use Illuminate\Http\Request;
 
 class MatriculaController extends Controller
 {
-    public function cadastrarMatricula()
-    {
-        $alunos = Aluno::all();
-        $cursos = Curso::all();
 
-        return view('cadastrarMatricula',['alunos'  => $alunos, 'cursos' => $cursos]);
-    }
-
-    public function salvarMatricula(Request $request)
+    public function store(Request $request)
     {
         $matricula = new Matricula();
 
@@ -27,5 +20,12 @@ class MatriculaController extends Controller
         $matricula->save();
 
         return redirect('/cadastrarMatricula');
+    }
+
+    public function create()
+    {
+        $alunos = Aluno::orderBy('nome')->get();
+        $cursos = Curso::orderBy('nome')->get();
+        return view('cadastrarMatricula', compact('alunos', 'cursos'));
     }
 }

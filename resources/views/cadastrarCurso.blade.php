@@ -1,3 +1,4 @@
+<?php include 'conn.php'; ?>
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -26,10 +27,10 @@
                         <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ route('cadastrarAluno') }}">Aluno</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('cadastrarCurso') }}">Curso</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cadastrarCurso') }}">Curso</a>
+                            <a class="nav-link" href="{{ route('cadastrarAluno') }}">Aluno</a>
                             </li>
                             <li class="nav-item">
                             <a class="nav-link" href="{{ route('cadastrarMatricula') }}">Matricula</a>
