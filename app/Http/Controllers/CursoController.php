@@ -8,6 +8,14 @@ use App\Models\Curso;
 
 class CursoController extends Controller
 {
+    public function cadastrarMatricula()
+    {
+        $consulta = Matricula::all();
+
+        return view('cadastrarMatricula', ['consulta' => $consulta]);
+    }
+
+
     public function store(Request $request)
     {
         $curso = new Curso();
@@ -21,5 +29,13 @@ class CursoController extends Controller
     public function create()
     {
         return view('cadastrarCurso');
+    }
+
+    public function destroy($id)
+    {
+        $curso = Curso::findOrFail($id);
+        $curso->delete();
+
+        return redirect('/relatorioCursos');
     }
 }

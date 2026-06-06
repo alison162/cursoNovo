@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Aluno;
 use Illuminate\Http\Request;
 use App\Models\Curso;
-
+use App\Models\Matricula;
 class AlunoController extends Controller
 {
+
+ public function cadastrarMatricula()
+    {
+        $consulta = Matricula::all();
+
+        return view('cadastrarMatricula',['consulta'  => $consulta]);
+    }
 
     public function store(Request $request)
     {
@@ -25,4 +32,20 @@ class AlunoController extends Controller
     {
         return view('cadastrarAluno');
     }
+
+    public function destroy($id)
+    {
+        $aluno = Aluno::find($id);
+
+    if($aluno->matricula()->count() > 0)
+    {
+        return redirect()->back()
+            ->with('erro', 'Aluno possui matrícula.');
+    }
+
+    $aluno->delete();
+
+    return redirect('/relatorioAlunos');
+    }
+    
 }

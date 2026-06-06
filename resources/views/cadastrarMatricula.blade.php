@@ -39,7 +39,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('cadastrarMatricula') }}">Matricula</a>
                             </li>
-
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('verRelatorio') }}">Relatório</a>
+                            </li>
 
                         </ul>
                     </div>
@@ -88,7 +90,8 @@
 
                                 <div class="mb-3">
                                     <label for="dataDaMatricula" class="form-label">Data da Matrícula</label>
-                                    <input type="date" name="dataDaMatricula" class="form-control" value="{{ $dataDaMatricula }}" id="dataDaMatricula" readonly>
+                                    <input type="date" name="dataDaMatricula" class="form-control"
+                                        value="{{ $dataDaMatricula }}" id="dataDaMatricula" readonly>
                                 </div>
 
                                 <button type="submit" class="btn btn-success">Salvar</button>

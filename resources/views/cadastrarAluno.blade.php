@@ -39,6 +39,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('cadastrarMatricula') }}">Matricula</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('verRelatorio') }}">Relatório</a>
+                            </li>
 
 
                         </ul>
