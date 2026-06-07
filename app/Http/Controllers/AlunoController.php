@@ -9,11 +9,11 @@ use App\Models\Matricula;
 class AlunoController extends Controller
 {
 
- public function cadastrarMatricula()
+    public function cadastrarMatricula()
     {
         $consulta = Matricula::all();
 
-        return view('cadastrarMatricula',['consulta'  => $consulta]);
+        return view('cadastrarMatricula', ['consulta' => $consulta]);
     }
 
     public function store(Request $request)
@@ -28,7 +28,7 @@ class AlunoController extends Controller
         return redirect('/cadastrarAluno');
     }
 
-      public function create()
+    public function create()
     {
         return view('cadastrarAluno');
     }
@@ -37,15 +37,33 @@ class AlunoController extends Controller
     {
         $aluno = Aluno::find($id);
 
-    if($aluno->matricula()->count() > 0)
+        if ($aluno->matricula()->count() > 0) {
+            return redirect()->back()
+                ->with('erro', 'Aluno possui matrícula.');
+        }
+
+        $aluno->delete();
+
+        return redirect('/relatorioAlunos');
+    }
+
+    public function edit($id)
     {
-        return redirect()->back()
-            ->with('erro', 'Aluno possui matrícula.');
+        $aluno = Aluno::find($id);
+
+        return view('editarAluno', compact('aluno'));
+    }
+    public function update(Request $request)
+    {
+        $aluno = Aluno::find($request->id);
+
+        $aluno->nome = $request->nome;
+        $aluno->cpf = $request->cpf;
+        $aluno->telefone = $request->telefone;
+
+        $aluno->save();
+
+        return redirect('/relatorioAlunos');
     }
 
-    $aluno->delete();
-
-    return redirect('/relatorioAlunos');
-    }
-    
 }

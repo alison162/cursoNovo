@@ -38,4 +38,24 @@ class CursoController extends Controller
 
         return redirect('/relatorioCursos');
     }
+
+    public function edit($id)
+    {
+        $curso = Curso::find($id);
+
+        return view('editarCurso', compact('curso'));
+    }
+    public function update(Request $request)
+    {
+        $curso = Curso::find($request->id);
+
+        $curso->nome = $request->nome;
+        $curso->cargaHoraria = $request->cargaHoraria;
+        $curso->status = $request->status;
+
+        $curso->save();
+
+        return redirect('/relatorioCursos');
+    }
+
 }

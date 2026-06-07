@@ -12,7 +12,7 @@
 <body>
     <section id="topo" class="container">
         <div class="row">
-            <div class="col-12" style="background-color:#3FA14C; height: 100px; padding-top: 40px; color:#ffffff">
+            <div class="col-12" style="background-color:#6a842c; height: 100px; padding-top: 40px; color:#ffffff">
                 <h3> Cursos - 32218 </h3>
             </div>
         </div>
@@ -55,7 +55,7 @@
         <div class="row">
             <div class="offset-2 col-8">
                 <div class="card">
-                    <div class="card-header" style="background-color:#215428;color:#ffffff">
+                    <div class="card-header" style="background-color:#6a842c;color:#ffffff">
                         Listar Matrículas
                     </div>
                     <div class="card-body d-flex justify-content-center">
@@ -94,7 +94,7 @@
     </section>
     <section id="rodape" class="container">
         <div class="row">
-            <div class="col-12 mt-4" style="background-color:#3FA14C; height: 70px;">
+            <div class="col-12 mt-4" style="background-color:#6a842c; height: 70px;">
             </div>
         </div>
     </section>

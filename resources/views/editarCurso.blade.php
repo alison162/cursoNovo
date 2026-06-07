@@ -4,10 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ver Relatório</title>
+    <title>Sistema Curso</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
 </head>
 
 <body>
@@ -51,45 +50,45 @@
 
         </div>
     </section>
-
     <section id="conteudo" class="container">
         <div class="row">
-            <div class="row">
-                <div class="col-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="images/aluno.png" class="card-img-top card-img" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Alunos</h5>
-                            <a href="{{ route('relatorioAlunos') }}" class="btn btn-primary">Acessar</a>
-                        </div>
+            <div class="offset-2 col-8">
+                <div class="card">
+                    <div class="card-header" style="background-color:#6a842c;color:#ffffff">
+                        Editar Curso
                     </div>
-                </div>
+                    <div class="card-body">
+                        <div class="offset-2 col-8">
+                            <form action="{{ route('updateCurso', ['id' => $curso->id]) }}" method="POST">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="nome" class="form-label">Nome</label>
+                                    <input type="text" name="nome" class="form-control" required id="nome" value="{{ $curso->nome }}">
+                                </div>
 
-                <div class="col-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="images/cursos.png" class="card-img-top card-img" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Cursos</h5>
-                            <a href="{{ route('relatorioCursos') }}" class="btn btn-primary">Acessar
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                                <div class="mb-3">
+                                    <label for="cargaHoraria" class="form-label">Carga Horária</label>
+                                    <input type="number" name="cargaHoraria" class="form-control" required
+                                        id="cargaHoraria" value="{{ $curso->cargaHoraria }}">
+                                </div>
 
-                <div class="col-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="images/matriculas.png" class="card-img-top card-img" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Matrículas</h5>
-                            <a href="{{ route('relatorioMatriculas') }}" class="btn btn-primary">Acessar</a>
+                                <div class="mb-3">
+                                    <label for="status" class="form-label">Status</label>
+                                    <select name="status" , id="status" class="form-control" required>
+                                        <option value="Ativo">Ativo</option>
+                                        <option value="Inativo">Inativo</option>
+                                    </select>
+
+                                </div>
+
+                                <button type="submit" class="btn btn-success">Salvar</button>
+                            </form>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
-
-    </section>
-
     </section>
     <section id="rodape" class="container">
         <div class="row">

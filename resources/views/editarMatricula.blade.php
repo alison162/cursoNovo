@@ -4,10 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ver Relatório</title>
+    <title>Sistema Curso</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
 </head>
 
 <body>
@@ -51,45 +50,58 @@
 
         </div>
     </section>
-
     <section id="conteudo" class="container">
         <div class="row">
-            <div class="row">
-                <div class="col-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="images/aluno.png" class="card-img-top card-img" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Alunos</h5>
-                            <a href="{{ route('relatorioAlunos') }}" class="btn btn-primary">Acessar</a>
-                        </div>
+            <div class="offset-2 col-8">
+                <div class="card">
+                    <div class="card-header" style="background-color:#6a842c;color:#ffffff">
+                        Editar Matricula
+    
                     </div>
-                </div>
+                    <div class="card-body">
+                        <div class="offset-2 col-8">
+                            <form action="{{ route('updateMatricula', ['id' => $matricula->id]) }}" method="POST">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="nome" class="form-label">Nome</label>
+                                    <select name="aluno_id" id="aluno_id" class="form-control" required>
 
-                <div class="col-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="images/cursos.png" class="card-img-top card-img" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Cursos</h5>
-                            <a href="{{ route('relatorioCursos') }}" class="btn btn-primary">Acessar
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                                        <option value="">Selecione um aluno</option>
 
-                <div class="col-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="images/matriculas.png" class="card-img-top card-img" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Matrículas</h5>
-                            <a href="{{ route('relatorioMatriculas') }}" class="btn btn-primary">Acessar</a>
+                                        @foreach($alunos as $aluno)
+                                            <option value="{{ $aluno->id }}" {{ $matricula->aluno_id == $aluno->id ? 'selected' : '' }}>
+                                                {{ $aluno->nome }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="curso" class="form-label">Curso</label>
+                                    <select name="curso_id" id="curso_id" class="form-control" required>
+                                        <option value="">Selecione um curso</option>
+                                        @foreach($cursos as $curso)
+                                            <option value="{{ $curso->id }}">
+                                                {{ $curso->nome }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="dataDaMatricula" class="form-label">Data da Matrícula</label>
+                                    <input type="date" name="dataDaMatricula" class="form-control"
+                                        value="{{ $dataDaMatricula }}" id="dataDaMatricula" readonly>
+                                </div>
+
+                                <button type="submit" class="btn btn-success">Salvar</button>
+                            </form>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
-
-    </section>
-
     </section>
     <section id="rodape" class="container">
         <div class="row">

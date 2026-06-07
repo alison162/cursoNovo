@@ -38,4 +38,24 @@ $dataDaMatricula = Carbon::now()->format('Y-m-d');
 
         return redirect('/relatorioMatriculas');
     }
+
+        public function edit($id)
+    {
+        $matricula = Matricula::find($id);
+
+        return view('editarMatricula', compact('matricula'));
+    }
+    public function update(Request $request)
+    {
+        $matricula = Matricula::find($request->id);
+
+        $matricula->dataDaMatricula = $request->dataDaMatricula;
+        $matricula->aluno_id = $request->aluno_id;
+        $matricula->curso_id = $request->curso_id;
+
+        $matricula->save();
+
+        return redirect('/relatorioMatriculas');
+    }
+
 }
