@@ -68,7 +68,7 @@
 
                                         <option value="">Selecione um aluno</option>
 
-                                        @foreach($alunos as $aluno)
+                                        @foreach($matriculas as $matricula)
                                             <option value="{{ $aluno->id }}" {{ $matricula->aluno_id == $aluno->id ? 'selected' : '' }}>
                                                 {{ $aluno->nome }}
                                             </option>
@@ -81,7 +81,7 @@
                                     <select name="curso_id" id="curso_id" class="form-control" required>
                                         <option value="">Selecione um curso</option>
                                         @foreach($cursos as $curso)
-                                            <option value="{{ $curso->id }}">
+                                            <option value="{{ $curso->id }}" {{ $matricula->curso_id == $curso->id ? 'selected' : '' }}>
                                                 {{ $curso->nome }}
                                             </option>
                                         @endforeach
@@ -91,7 +91,7 @@
                                 <div class="mb-3">
                                     <label for="dataDaMatricula" class="form-label">Data da Matrícula</label>
                                     <input type="date" name="dataDaMatricula" class="form-control"
-                                        value="{{ $dataDaMatricula }}" id="dataDaMatricula" readonly>
+                                        value="{{ $matricula->dataDaMatricula }}" id="dataDaMatricula" readonly>
                                 </div>
 
                                 <button type="submit" class="btn btn-success">Salvar</button>

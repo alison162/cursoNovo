@@ -52,6 +52,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('cadastrarMatricula') }}">Matricula</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('verRelatorio') }}">Relatório</a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -59,8 +63,9 @@
         </div>
     </section>
 
+
     <div id="conteudo" class="container">
-        <div class="row">
+        <div class="row mt-4">
             <div class="offset-2 col-8">
                 <div class="card">
                     <div class="card-header" style="background-color:#6a842c;color:#ffffff">
@@ -100,7 +105,7 @@
                 </div>
             </div>
         </div>
-
+</div>
         </section>
         <section id="rodape" class="container">
             <div class="row">

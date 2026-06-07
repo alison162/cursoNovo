@@ -25,7 +25,7 @@ class MatriculaController extends Controller
 
     public function create()
     {
-$dataDaMatricula = Carbon::now()->format('Y-m-d');
+        $dataDaMatricula = Carbon::now()->format('Y-m-d');
         $alunos = Aluno::orderBy('nome')->get();
         $cursos = Curso::where('status', '=', 'ativo')->orderBy('nome')->get();
         return view('cadastrarMatricula', compact('alunos', 'cursos', 'dataDaMatricula'));
@@ -33,22 +33,30 @@ $dataDaMatricula = Carbon::now()->format('Y-m-d');
 
     public function destroy($id)
     {
-        $matricula = Matricula::findOrFail($id);
+        $matricula = Matricula::find($id);
         $matricula->delete();
 
         return redirect('/relatorioMatriculas');
     }
 
-        public function edit($id)
+    public function edit($id)
     {
         $matricula = Matricula::find($id);
 
-        return view('editarMatricula', compact('matricula'));
+        $alunos = Aluno::orderBy('nome')->get();
+
+        $cursos = Curso::orderBy('nome')->get();
+
+        return view(
+            'editarMatricula',
+            compact('matricula', 'alunos', 'cursos')
+        );
     }
     public function update(Request $request)
     {
         $matricula = Matricula::find($request->id);
 
+        $dataDaMatricula = Carbon::now()->format('Y-m-d');
         $matricula->dataDaMatricula = $request->dataDaMatricula;
         $matricula->aluno_id = $request->aluno_id;
         $matricula->curso_id = $request->curso_id;
