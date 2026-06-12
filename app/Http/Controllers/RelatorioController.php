@@ -11,7 +11,7 @@ class RelatorioController extends Controller
     public function relatorioMatriculas()
     {
         $cursos = Curso::all();
-        return view('relatorioMatriculas', compact('cursos'));
+        return view('relatorioMatriculas', ['cursos' => $cursos]);
     }
 
     public function relatorioAlunos()
@@ -39,9 +39,8 @@ class RelatorioController extends Controller
             ->with('aluno')
             ->get();
     
-        return view('relatorioMatriculasFiltrado', compact('curso', 'matriculas'));
+        return view('relatorioMatriculasFiltrado', ['curso' => $curso, 'matriculas' => $matriculas]);
     }
 
  
 }
-?>
