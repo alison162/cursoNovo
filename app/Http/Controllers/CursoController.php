@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Aluno;
 use App\Models\Curso;
+use App\Models\Matricula;
 
 class CursoController extends Controller
 {
@@ -34,6 +35,11 @@ class CursoController extends Controller
     public function destroy($id)
     {
         $curso = Curso::findOrFail($id);
+        if (Matricula::where('curso_id', $id)->exists()) {
+            return redirect('/relatorioCursos')
+                ->with('erro', 'Não é possível excluir este curso, pois existem matrículas vinculadas a ele.');
+        }
+
         $curso->delete();
 
         return redirect('/relatorioCursos');

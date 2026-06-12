@@ -44,6 +44,10 @@
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page"
+                                    href="{{ route('principal') }}">Principal</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page"
                                     href="{{ route('cadastrarAluno') }}">Aluno</a>
                             </li>
                             <li class="nav-item">
@@ -105,22 +109,22 @@
                 </div>
             </div>
         </div>
-</div>
-        </section>
-        <section id="rodape" class="container">
-            <div class="row">
-                <div class="col-12 mt-4" style="background-color:#6a842c; height: 70px;">
-                </div>
+    </div>
+    </section>
+    <section id="rodape" class="container">
+        <div class="row">
+            <div class="col-12 mt-4" style="background-color:#6a842c; height: 70px;">
             </div>
-        </section>
+        </div>
+    </section>
 
 
 
 
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

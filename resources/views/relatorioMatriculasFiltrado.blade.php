@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sistema Curso</title>
+    <title>Ver Relatório</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
 <body>
-<style>
+    <style>
         .produto-img {
             width: 300px;
             height: 400px;
@@ -19,7 +19,7 @@
     </style>
     <section id="topo" class="container">
         <div class="row">
-        <div class="col-12 d-flex align-items-center"
+            <div class="col-12 d-flex align-items-center"
                 style="background-color:#6a842c; height: 100px; color:#ffffff">
 
                 <img src="{{ asset('images/logo_curso.png') }}" alt="Logo"
@@ -32,7 +32,7 @@
     <section id="menu" class="container">
         <div class="row">
 
-        <nav class="navbar navbar-expand-lg bg-success-subtle">
+            <nav class="navbar navbar-expand-lg bg-success-subtle">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -66,58 +66,48 @@
 
         </div>
     </section>
+
     <section id="conteudo" class="container">
         <div class="row">
             <div class="offset-2 col-8">
                 <div class="card">
                     <div class="card-header" style="background-color:#6a842c;color:#ffffff">
-                        Realizar Matricula
-
+                        Listar Matrículas
                     </div>
-                    <div class="card-body">
-                        <div class="offset-2 col-8">
-                            <form action="{{ route('salvarMatricula') }}" method="POST">
-                                @csrf
-                                <div class="mb-3">
-                                    <label for="nome" class="form-label">Nome</label>
-                                    <select name="aluno_id" id="aluno_id" class="form-control" required>
+                    <div class="card-body d-flex justify-content-center">
+                        <div class="col-10">
+                            <table class="table table-striped text-center">
+                                <tr>
+                                    <th>Aluno</th>
+                                    <th>CPF</th>
+                                    <th>Data de Matrícula</th>
+                                    <th>Ações</th>
 
-                                        <option value="">Selecione um aluno</option>
+                                </tr>
+                                @foreach ($matriculas as $matricula)
+                                    <tr class="text-center">
+                                        <td>{{ $matricula->aluno->nome}} </td>
+                                        <td>{{ $matricula->aluno->cpf}} </td>
+                                        <td>{{ \Carbon\Carbon::parse($matricula->dataDaMatricula)->format('d/m/Y') }}</td>
+                                        <td>
+                                        <a href="{{ route('editarMatricula', $matricula->id) }}"
+                                            class="btn btn-warning btn-sm">Editar</a>
 
-                                        @foreach($alunos as $aluno)
-                                            <option value="{{ $aluno->id }}">
-                                                {{ $aluno->nome }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                        <a href="{{ route('excluirMatricula', $matricula->id) }}"
+                                            class="btn btn-danger btn-sm">Excluir</a>
+                                            </td>
+                                    </tr>
 
-                                <div class="mb-3">
-                                    <label for="curso" class="form-label">Curso</label>
-                                    <select name="curso_id" id="curso_id" class="form-control" required>
-                                        <option value="">Selecione um curso</option>
-                                        @foreach($cursos as $curso)
-                                            <option value="{{ $curso->id }}">
-                                                {{ $curso->nome }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="dataDaMatricula" class="form-label">Data da Matrícula</label>
-                                    <input type="date" name="dataDaMatricula" class="form-control"
-                                        value="{{ $dataDaMatricula }}" id="dataDaMatricula" readonly>
-                                </div>
-
-                                <button type="submit" class="btn btn-success">Salvar</button>
-                            </form>
+                                @endforeach
+                            </table>
                         </div>
 
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+
     </section>
     <section id="rodape" class="container">
         <div class="row">
@@ -133,6 +123,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+
 </body>
 
 </html>

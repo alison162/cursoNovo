@@ -43,13 +43,14 @@ class MatriculaController extends Controller
     {
         $matricula = Matricula::find($id);
 
-        $alunos = Aluno::orderBy('nome')->get();
+        $aluno = Aluno::findOrFail($matricula->aluno_id);
 
-        $cursos = Curso::orderBy('nome')->get();
+
+        $cursos = Curso::where('status', '=', 'ativo')->orderBy('nome')->get();
 
         return view(
             'editarMatricula',
-            compact('matricula', 'alunos', 'cursos')
+            compact('matricula', 'aluno', 'cursos')
         );
     }
     public function update(Request $request)
@@ -58,7 +59,6 @@ class MatriculaController extends Controller
 
         $dataDaMatricula = Carbon::now()->format('Y-m-d');
         $matricula->dataDaMatricula = $request->dataDaMatricula;
-        $matricula->aluno_id = $request->aluno_id;
         $matricula->curso_id = $request->curso_id;
 
         $matricula->save();

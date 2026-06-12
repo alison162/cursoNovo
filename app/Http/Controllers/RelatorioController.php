@@ -10,8 +10,8 @@ class RelatorioController extends Controller
 {
     public function relatorioMatriculas()
     {
-        $consulta = Matricula::with('aluno', 'curso')->get();
-        return view('relatorioMatricula', ['consulta' => $consulta]);
+        $cursos = Curso::all();
+        return view('relatorioMatriculas', compact('cursos'));
     }
 
     public function relatorioAlunos()
@@ -30,6 +30,18 @@ class RelatorioController extends Controller
     {
         return view('verRelatorio');
     }
+
+    public function relatorioMatriculasEscolhas(Request $request)
+    {
+        $curso = Curso::findOrFail($request->curso_id);
+    
+        $matriculas = Matricula::where('curso_id', $request->curso_id)
+            ->with('aluno')
+            ->get();
+    
+        return view('relatorioMatriculasFiltrado', compact('curso', 'matriculas'));
+    }
+
  
 }
 ?>
