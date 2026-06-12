@@ -19,7 +19,7 @@ class CursoController extends Controller
 
     public function store(Request $request)
     {
-        $curso = new Curso();
+    $curso = new Curso();
         $curso->nome = $request->nome;
         $curso->cargaHoraria = $request->cargaHoraria;
         $curso->status = $request->status;
@@ -49,7 +49,8 @@ class CursoController extends Controller
     {
         $curso = Curso::find($id);
 
-        return view('editarCurso', compact('curso'));
+        return view('editarCurso', ['curso' => $curso
+        ]);
     }
     public function update(Request $request)
     {

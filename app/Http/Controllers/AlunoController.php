@@ -9,13 +9,6 @@ use App\Models\Matricula;
 class AlunoController extends Controller
 {
 
-    public function cadastrarMatricula()
-    {
-        $consulta = Matricula::all();
-
-        return view('cadastrarMatricula', ['consulta' => $consulta]);
-    }
-
     public function store(Request $request)
     {
         $aluno = new Aluno();
