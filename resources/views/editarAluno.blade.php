@@ -86,13 +86,13 @@
 
                                 <div class="mb-3">
                                     <label for="cpf" class="form-label">CPF</label>
-                                    <input type="text" name="cpf" class="form-control" required id="cpf"
+                                    <input type="text" name="cpf" class="form-control" pattern="\d{11}" maxlength="11" title="Digite apenas os 11 números sem traço ou ponto"  required id="cpf"
                                         value="{{ $aluno->cpf }}">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="telefone" class="form-label">Telefone</label>
-                                    <input type="text" name="telefone" class="form-control" id="telefone"
+                                    <input type="text" name="telefone" class="form-control" pattern="\d{11}" maxlength="11" title="Digite apenas os 11 números(DDD + número) sem traço" id="telefone"
                                         value="{{ $aluno->telefone }}">
                                 </div>
 
